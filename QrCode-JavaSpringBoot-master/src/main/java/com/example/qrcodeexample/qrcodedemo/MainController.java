@@ -1,6 +1,7 @@
 package com.example.qrcodeexample.qrcodedemo;
 
 import com.google.zxing.WriterException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ public class MainController {
     private static final String QR_CODE_IMAGE_PATH = "./src/main/resources/static/img/QRCode.png'";
 
     @GetMapping("/")
-    public String getQRCode(Model model){
+    public ResponseEntity<Model>  getQRCode(Model model){
         String medium="Original :  admin , son kullanici";
         String github="https://github.com/mertkiziloglu";
 
@@ -35,6 +36,6 @@ public class MainController {
 
         model.addAttribute("qrcode",qrcode);
 
-        return "qrcode";
+        return ResponseEntity.ok(model);
     }
 }
