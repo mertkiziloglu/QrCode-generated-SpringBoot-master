@@ -36,6 +36,7 @@ public class MainController {
 
         model.addAttribute("qrcode",qrcode);
 
-        return ResponseEntity.ok(model);
+        return ResponseEntity.
+                ok().contentLength(image.length).body(model);
     }
 }
